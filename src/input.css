@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #000000;
+  --color-secondary: #808080;
+  --color-accent: #404040;
+  --color-charcoal: #1F1F1F;
+  --color-cream: #F9F5EC;
+  --color-cream-dark: #EDE8DC;
+  
+  --font-family-serif: 'Cormorant Garamond', serif;
+  --font-family-sans: 'Source Sans Pro', sans-serif;
+}
+
+@source "./*.html";
+
+/* Grayscale filter for all images */
+img {
+    filter: grayscale(100%);
+}
+
+/* Exclude specific images from grayscale */
+img.no-grayscale {
+    filter: none;
+}
+
+/* 3D Image hover effect */
+.img-3d {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.img-3d:hover {
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg) scale(1.02);
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.2);
+}
+
+/* Subtle card hover effect */
+.card-3d {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-3d:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.15);
+}
+
+/* Gold tint on card images */
+.card-3d .h-64 {
+    position: relative;
+}
+
+.card-3d .h-64::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(201, 169, 98, 0) 0%, rgba(201, 169, 98, 0.15) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.card-3d:hover .h-64::after {
+    opacity: 1;
+}
+
+/* Animated hamburger menu */
+.hamburger {
+    width: 24px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 18px;
+}
+
+.hamburger.active span:nth-child(1) {
+    top: 9px;
+    transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.hamburger.active span:nth-child(3) {
+    top: 9px;
+    transform: rotate(-45deg);
+}
+
+/* Glass morphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Shine animation for headings */
+.shine {
+    background: linear-gradient(90deg, #000 0%, #000 40%, #666 50%, #000 60%, #000 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Hero animations - elegant luxury reveal */
+@keyframes elegantReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+        letter-spacing: 0.3em;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: normal;
+    }
+}
+
+@keyframes softFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slowZoom {
+    from {
+        transform: scale(1.05);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes overlayReveal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-bg {
+    animation: slowZoom 12s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.hero-overlay {
+    opacity: 0;
+    animation: overlayReveal 2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
+}
+
+.hero-title {
+    opacity: 0;
+    animation: titleReveal 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards;
+}
+
+.hero-subtitle {
+    opacity: 0;
+    animation: elegantReveal 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) 1s forwards;
+}
+
+.hero-buttons {
+    opacity: 0;
+    animation: elegantReveal 1.4s cubic-bezier(0.25, 0.1, 0.25, 1) 1.4s forwards;
+}
+
+.hero-scroll {
+    opacity: 0;
+    animation: softFade 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 2.2s forwards;
+}
+
+/* Luxury word color reveal */
+@keyframes colorReveal {
+    0% {
+        color: white;
+    }
+    100% {
+        color: #C9A962;
+    }
+}
+
+.luxury-word {
+    color: white;
+    animation: colorReveal 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 2.5s forwards;
+}

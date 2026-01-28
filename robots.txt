@@ -1,0 +1,6 @@
+# robots.txt for Luxury with Lucy
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.luxurywithlucy.com/sitemap.xml
